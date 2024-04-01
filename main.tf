@@ -1,12 +1,9 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_instance" "dev" {
-    ami = "ami-0c101f26f147fa7fd"
-    instance_type = "t2.micro"
-    subnet_id = "subnet-0da392acf275d1cb5"
+    ami = var.ami_id
+    instance_type = var.instance_type
+    key_name = var.key_name
+    associate_public_ip_address = true
     tags = {
-      Name = "dev-ec2"
+      Name = "dev_ec2"
     }
 }
